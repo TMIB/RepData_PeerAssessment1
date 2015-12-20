@@ -123,7 +123,7 @@ ggplot(averages, aes(x=interval, y = steps)) + geom_line(stat = &quot;identity&q
 <pre class="r"><code>sum(is.na(rawactivities))</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</p>
-<p>Create a new dataset that is equal to the original dataset but with the missing data filled in.</p>
+<p>strategy used: taking the mean for that 5 minute interval. Create a new dataset that is equal to the original dataset but with the missing data filled in.</p>
 <pre class="r"><code>dfsteps&lt;-data.frame(rawactivities$steps)
 
 dfsteps[is.na(dfsteps),]&lt;-tapply(X=rawactivities$steps,INDEX=rawactivities$interval,FUN=mean,na.rm=TRUE)
